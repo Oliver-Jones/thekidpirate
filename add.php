@@ -12,12 +12,12 @@
 	$datestamp = date('Y-m-d');
 	$timestamp = date('H:i:s');
 	$decision = "no";
-	foreach($_POST['public'] as $each_check) { //gets the data from the checkbox
-            if($each_check != null) { //checks if checkbox is checked
+	foreach($_POST['public_checks'] as $each_check) { //gets the data from the checkbox
+            if($each_check == true) { //checks if checkbox is checked
 	        $decision = "yes"; // sets the value
 	    }
         }
-        pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$datestamp','$timestamp','$decision', '$userid')"); //SQL query
+        pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$datestamp','$timestamp','$decision','$userid')"); //SQL query
         header("location:home.php");
     }
     else {
