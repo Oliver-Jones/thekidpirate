@@ -5,24 +5,22 @@
     $password = pg_escape_string($_POST['password']);
     $bool = true;
     $query = pg_query($db, "SELECT * FROM users WHERE username = '$username'"); // Query the users table
-    $exists = pg_num_rows($query); //Checks if username exists
+    if(!$query) {
+        die("Error in SQL query: " . pg_last_error() . "\n");
+    }
+    $exists = pg_num_rows($query);
     $table_users = "";
     $table_password = "";
-    if($exists > 0) { //IF there are no returning rows or no existing username
-        while($row = pg_fetch_assoc($query)) { // display all rows from query, the first username row is 
-		echo $row['username'];
-		echo $row['password'];
-		echo $row['id'];
-		echo $username;
-		echo $password;
-	    $table_users = $row['username']; // passed on to $table_users and so on until the query is finished
-	    $table_password = $row['password']; // the first password row is passed on to $table_password, and so on 
+    if($exists > 0) {
+        while($row = pg_fetch_assoc($query)) {
+	    $table_users = $row['username'];
+	    $table_password = $row['password'];
 	    $table_id = $row['id'];
-        } // until the query is finished
-        if(($username == $row['username']) && ($password == $row['password'])) { // checks if there are any matching fields
-	    $_SESSION['user'] = $username; // set the username in a session. This serves as a global variable
+        }
+        if(($username == $table_users) && ($password == $table_password)) {
+	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
-	    header("location: home.php"); // redirects the user to the authenticated home page
+	    header("location: home.php");
 	}
 	else {
 	    Print '<script>alert("Incorrect Password!");</script>'; // Prompts the user
@@ -33,4 +31,5 @@
         Print '<script>alert("Incorrect username!");</script>'; // Prompts the user
         Print '<script>window.location.assign("login.php");</script>'; // redirects to login.php
     }
+    pg_close($db);
 ?>
