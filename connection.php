@@ -7,8 +7,6 @@
 
    $db = pg_connect( "$host $port $dbname $username $password" );
    if(!$db) {
-      echo "Error : Unable to open database\n";
-   } else {
-      echo "Opened database successfully\n";
+      die("Error in connection: unable to open database " . pg_last_error() . "\n");
    }
 ?>
