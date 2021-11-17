@@ -3,8 +3,8 @@
         <title>My first PHP Website</title>
     </head>
     <?php
-	include 'connection.php';
 	session_start(); //starts the session
+	include 'connection.php';
 	if($_SESSION['user']){ // checks if the user is logged in  
 	}
 	else{
@@ -35,7 +35,7 @@
 		<?php
 		    $userid = pg_escape_string($_SESSION['userid']);
             	    $query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
-            	    while($row = pg_fetch_row($query)) {
+            	    while($row = pg_fetch_assoc($query)) {
                 	Print "<tr>";
 			Print '<td align="center">'. $row['id'] . "</td>";
 			Print '<td align="center">'. $row['details'] . "</td>";
@@ -52,7 +52,7 @@
 		function confirmDelete(id) {
 		   var r = confirm("Are you sure you want to delete this record?");
 		   if(r == true) {
-			  window.location.assign("delete.php?id=" + id);
+			window.location.assign("delete.php?id=" + id);
 		   }
 		}
 	</script>
