@@ -8,7 +8,7 @@
     if(!$query) {
         die("Error in SQL query: " . pg_last_error() . "\n");
     }
-    Print '<script>alert("1!");</script>';
+    echo '<script type="text/javascript">alert("'.$query.'");</script>';
     $exists = pg_num_rows($query);
     $table_users = "";
     $table_password = "";
@@ -20,6 +20,10 @@
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
+	    echo '<script type="text/javascript">alert("'.$username.'");</script>';
+	    echo '<script type="text/javascript">alert("'.$table_users.'");</script>';
+	    echo '<script type="text/javascript">alert("'.$password.'");</script>';
+	    echo '<script type="text/javascript">alert("'.$table_password.'");</script>';
 	Print '<script>alert("4!");</script>';
 	Print '<script>alert("5!");</script>';
 	Print '<script>alert("6!");</script>';
