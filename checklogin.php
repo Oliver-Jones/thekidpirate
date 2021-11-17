@@ -17,14 +17,6 @@
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
-	echo '<script type="text/javascript">alert("'.($username == $table_users).'");</script>';
-	echo '<script type="text/javascript">alert("'.($username === $table_users).'");</script>';
-	echo '<script type="text/javascript">alert("'.(strcmp($username,$table_users)).'");</script>';
-	echo '<script type="text/javascript">alert("'.($username = $table_users).'");</script>';
-	    echo '<script type="text/javascript">alert("'.($password == $table_password).'");</script>';
-	echo '<script type="text/javascript">alert("'.($password === $table_password).'");</script>';
-	echo '<script type="text/javascript">alert("'.(strcmp($password,$table_password)).'");</script>';
-	echo '<script type="text/javascript">alert("'.($password = $table_password).'");</script>';
         if($username === $table_users && $password == $table_password) {
 	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
