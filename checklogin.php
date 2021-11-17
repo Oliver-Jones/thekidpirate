@@ -2,11 +2,9 @@
     session_start();
     include 'connection.php';
     $username = pg_escape_string($_POST['username']);
-    echo "username ".$username;
     $password = pg_escape_string($_POST['password']);
-    echo "password ".$password;
     $bool = true;
-    $query = pg_query_params($db, "Select * from users WHERE username=$1", array($username)); // Query the users table
+    $query = pg_query($db, "SELECT * FROM users WHERE username = '{$username}'"); // Query the users table
     $exists = pg_num_rows($query); //Checks if username exists
     $table_users = "";
     $table_password = "";
