@@ -17,8 +17,11 @@
 	        $decision = "yes"; // sets the value
 	    }
         }
-        pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$datestamp','$timestamp','$decision','$userid')"); //SQL query
-        header("location:home.php");
+        $query = pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$datestamp','$timestamp','$decision','$userid')"); //SQL query
+        if(!$query) {
+	    die("Error in SQL query: " . pg_last_error() . "\n");
+	}
+	header("location:home.php");
     }
     else {
         header("location:home.php"); //redirects back to home
