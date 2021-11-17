@@ -18,7 +18,7 @@
         <a href="logout.php">Click here to logout</a><br/><br/>
         <form action="add.php" method="POST">
             Add more to list: <input type="text" name="details" /> <br/>
-            Public post? <input type="checkbox" name="public[]" value="yes" /> <br/>
+            Public post? <input type="checkbox" name="public_checks[]" value="false" /> <br/>
             <input type="submit" value="Add to list"/>
         </form>
     	<h2 align="center">My list</h2>
