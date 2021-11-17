@@ -7,6 +7,8 @@
        header("location:index.php");
     }
     if($_SERVER['REQUEST_METHOD'] == "POST") {
+	    alert("hi");
+	    alert("hi".$_SESSION['user']);
 	$details = pg_escape_string($_POST['details']);
 	$userid = pg_escape_string($_SESSION['userid']);
 	$time = strftime("%X"); //time
