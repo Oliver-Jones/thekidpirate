@@ -7,9 +7,8 @@
        header("location:index.php");
     }
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-        $mysqli = new mysqli("localhost", "root", "", "thekidpirate_db");
-	$details = mysqli_real_escape_string($mysqli, $_POST['details']);
-	$userid = mysqli_real_escape_string($mysqli, $_SESSION['userid']);
+	$details = pg_escape_string($_POST['details']);
+	$userid = pg_escape_string($_SESSION['userid']);
 	$time = strftime("%X"); //time
 	$date = strftime("%B %d, %Y"); //date
 	$decision = "no";
@@ -18,7 +17,7 @@
 	        $decision = "yes"; // sets the value
 	    }
         }
-        mysqli_query($mysqli, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$date','$time','$decision', '$userid')"); //SQL query
+        pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$date','$time','$decision', '$userid')"); //SQL query
         header("location:home.php");
     }
     else {
