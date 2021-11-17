@@ -23,10 +23,10 @@
 	$bool = true;
 	$query = pg_query($db, "SELECT * FROM users WHERE username = '$username'"); //Query the users table
 	while($row = pg_fetch_assoc($query)) { //display all rows from query
-            $table_users = $row['username']; // the first username row 
+            $table_users = trim($row['username']); // the first username row 
                                           // is passed on to $table_users, 
                                           // and so on until the query is finished
-	    if($username == $table_users) { // checks if there are any matching fields
+	    if($username === $table_users) { // checks if there are any matching fields
     	        $bool = false; // sets bool to false
     		Print '<script>alert("Username has been taken!");</script>'; //Prompts the user
     		Print '<script>window.location.assign("register.php");</script>'; //redirects to register.php
