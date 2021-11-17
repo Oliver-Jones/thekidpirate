@@ -46,6 +46,7 @@
 			Print '<td align="center">'. $row['public'] . "</td>";
 		        Print "</tr>";
                     }
+		    pg_close($db);
         	?>
 	</table>
 	<script>
