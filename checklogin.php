@@ -8,7 +8,6 @@
     if(!$query) {
         die("Error in SQL query: " . pg_last_error() . "\n");
     }
-    echo '<script type="text/javascript">alert("'.$query.'");</script>';
     $exists = pg_num_rows($query);
     $table_users = "";
     $table_password = "";
@@ -20,24 +19,13 @@
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
-	    echo '<script type="text/javascript">alert("'.$username.'");</script>';
-	    echo '<script type="text/javascript">alert("'.$table_users.'");</script>';
-	    echo '<script type="text/javascript">alert("'.($username == $table_users).'");</script>';
-	    echo '<script type="text/javascript">alert("'.$table_password.'");</script>';
-	    echo '<script type="text/javascript">alert("'.$password.'");</script>';
-	    echo '<script type="text/javascript">alert("'.($password == $table_password).'");</script>';
-	Print '<script>alert("4!");</script>';
-	Print '<script>alert("5!");</script>';
-	Print '<script>alert("6!");</script>';
-	Print '<script>alert("7!");</script>';
-        if(($username == $table_users) && ($password == $table_password)) {
-		Print '<script>alert("8!");</script>';
+	//echo '<script type="text/javascript">alert("'.($username == $table_users).'");</script>';
+        if(strcmp($username, $table_users) == 0 && ($password === $table_password)) {
 	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
 	    header("location: home.php");
 	}
 	else {
-		Print '<script>alert("9!");</script>';
 	    Print '<script>alert("Incorrect Password!");</script>'; // Prompts the user
 	    Print '<script>window.location.assign("login.php");</script>'; // redirects to login.php
 	}
