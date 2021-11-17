@@ -13,7 +13,7 @@
     $table_password = "";
     if($exists > 0) {
         while($row = pg_fetch_assoc($query)) {
-	    $table_users = $row['username'];
+	    $table_users = trim($row['username']);
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
