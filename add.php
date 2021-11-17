@@ -6,6 +6,8 @@
     else{ 
        header("location:index.php");
     }
+$vas = $_SERVER['REQUEST_METHOD'];
+	echo '<script type="text/javascript">alert("'.$vas.'");</script>';
     if($_SERVER['REQUEST_METHOD'] == "POST") {
 	$details = pg_escape_string($_POST['details']);
 	    echo '<script type="text/javascript">alert("'.$details.'");</script>';
@@ -26,6 +28,7 @@
         header("location:home.php");
     }
     else {
+	    echo '<script type="text/javascript">alert("postgresql is waste");</script>';
         header("location:home.php"); //redirects back to home
     }
     pg_close($db);
