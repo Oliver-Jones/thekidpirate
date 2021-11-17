@@ -13,16 +13,16 @@
 		echo $row['username'];
 		echo $row['password'];
 		echo $row['id'];
+		echo $username;
+		echo $password;
 	    $table_users = $row['username']; // passed on to $table_users and so on until the query is finished
 	    $table_password = $row['password']; // the first password row is passed on to $table_password, and so on 
 	    $table_id = $row['id'];
         } // until the query is finished
-        if(($username == $table_users) && ($password == $table_password)) { // checks if there are any matching fields
-            if($password == $table_password) {
-		$_SESSION['user'] = $username; // set the username in a session. This serves as a global variable
-		$_SESSION['userid'] = $table_id;
-		header("location: home.php"); // redirects the user to the authenticated home page
-	    }
+        if(($username == $row['username']) && ($password == $row['password'])) { // checks if there are any matching fields
+	    $_SESSION['user'] = $username; // set the username in a session. This serves as a global variable
+	    $_SESSION['userid'] = $table_id;
+	    header("location: home.php"); // redirects the user to the authenticated home page
 	}
 	else {
 	    Print '<script>alert("Incorrect Password!");</script>'; // Prompts the user
