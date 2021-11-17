@@ -16,14 +16,13 @@
 </html>
 
 <?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-	$mysqli = new mysqli("localhost", "root", "", "thekidpirate_db");
-    $username = mysqli_real_escape_string($mysqli, $_POST['username']);
-    $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+    include 'connection.php';
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+	$username = pg_escape_string($_POST['username']);
+	$password = pg_escape_string($_POST['password']);
 	$bool = true;
-   
-    $query = mysqli_query($mysqli, "Select * from users"); //Query the users table
-    while($row = mysqli_fetch_assoc($query)) { //display all rows from query
+	$query = pg_query($db, "Select * from users"); //Query the users table
+	while($row = pg_fetch_row($query)) { //display all rows from query
         $table_users == $row['username']; // the first username row 
                                           // is passed on to $table_users, 
                                           // and so on until the query is finished
@@ -35,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if($bool) { // checks if bool is true
-        mysqli_query($mysqli, "INSERT INTO users (username, password) VALUES ('$username', '$password')"); // inserts value into table users
+        pg_query($db, "INSERT INTO users (username, password) VALUES ('$username', '$password')"); // inserts value into table users
         Print '<script>alert("Successfully Registered!");</script>'; // Prompts the user
         Print '<script>window.location.assign("home.php");</script>'; // redirects to home.php
     }
