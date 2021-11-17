@@ -17,18 +17,6 @@
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
-	    $con1 = ($username == $table_users);
-	    $con2 = ($username === $table_users);
-	    $con3 = strcmp($username,$table_users);
-	    $con5 = ($password == $table_password);
-	    $con6 = ($password === $table_password);
-	    $con7 = strcmp($password,$table_password);
-	    echo '<script type="text/javascript">alert("'.$con1.'");</script>';
-	echo '<script type="text/javascript">alert("'.$con2.'");</script>';
-	echo '<script type="text/javascript">alert("'.$con3.'");</script>';
-	    echo '<script type="text/javascript">alert("'.$con5.'");</script>';
-	echo '<script type="text/javascript">alert("'.$con6.'");</script>';
-	echo '<script type="text/javascript">alert("'.$con7.'");</script>';
         if($username === $table_users && $password == $table_password) {
 	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
