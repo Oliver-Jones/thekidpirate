@@ -80,7 +80,10 @@
 		$public = "yes";
 	    }
 	}
-	pg_query($db, "UPDATE list SET details='$details', public='$public', date_edited='$date', time_edited='$time' WHERE id='$id'");
+	$query = pg_query($db, "UPDATE list SET details='$details', public='$public', date_edited='$date', time_edited='$time' WHERE id='$id'");
+	if(!$query) {
+	    die("Error in SQL query: " . pg_last_error() . "\n");
+	}
 	header("location:home.php");
     }
 ?>
