@@ -8,22 +8,22 @@
     if(!$query) {
         die("Error in SQL query: " . pg_last_error() . "\n");
     }
-    Print '<script>alert("1!"' . $query . ');</script>';
+    Print '<script>alert("1!");</script>';
     $exists = pg_num_rows($query);
     $table_users = "";
     $table_password = "";
     if($exists > 0) {
-	Print '<script>alert("2!"' . $exists . ');</script>';
+	Print '<script>alert("2!");</script>';
         while($row = pg_fetch_assoc($query)) {
-	    Print '<script>alert("3!"' . $row . ');</script>';
+	    Print '<script>alert("3!");</script>';
 	    $table_users = $row['username'];
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
-	Print '<script>alert("4!"' . $username . ');</script>';
-	Print '<script>alert("5!"' . $table_users . ');</script>';
-	Print '<script>alert("6!"' . $password . ');</script>';
-	Print '<script>alert("7!"' . $table_password . ');</script>';
+	Print '<script>alert("4!");</script>';
+	Print '<script>alert("5!");</script>';
+	Print '<script>alert("6!");</script>';
+	Print '<script>alert("7!");</script>';
         if(($username == $table_users) && ($password == $table_password)) {
 		Print '<script>alert("8!");</script>';
 	    $_SESSION['user'] = $username;
