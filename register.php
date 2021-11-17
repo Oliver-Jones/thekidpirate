@@ -21,7 +21,7 @@
 	$username = pg_escape_string($_POST['username']);
 	$password = pg_escape_string($_POST['password']);
 	$bool = true;
-	$query = pg_query($db, "SELECT * FROM users WHERE username = $username"); //Query the users table
+	$query = pg_query($db, "SELECT * FROM users WHERE username = '{$username}'"); //Query the users table
 	while($row = pg_fetch_row($query)) { //display all rows from query
             $table_users == $row['username']; // the first username row 
                                           // is passed on to $table_users, 
