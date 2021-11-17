@@ -9,7 +9,7 @@
     $table_users = "";
     $table_password = "";
     if($exists > 0) { //IF there are no returning rows or no existing username
-        while($row = pg_fetch_row($query)) { // display all rows from query, the first username row is 
+        while($row = pg_fetch_assoc($query)) { // display all rows from query, the first username row is 
 	    $table_users = $row['username']; // passed on to $table_users and so on until the query is finished
 	    $table_password = $row['password']; // the first password row is passed on to $table_password, and so on 
 	    $table_id = $row['id'];
