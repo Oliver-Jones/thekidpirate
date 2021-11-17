@@ -3,13 +3,14 @@
         <title>My first PHP Website</title>
     </head>
     <?php
-    session_start(); //starts the session
-    if($_SESSION['user']){ // checks if the user is logged in  
-    }
-    else{
-        header("location: index.php"); // redirects if user is not logged in
-    }
-    $user = $_SESSION['user']; //assigns user value
+	include 'connection.php';
+	session_start(); //starts the session
+	if($_SESSION['user']){ // checks if the user is logged in  
+	}
+	else{
+	    header("location: index.php"); // redirects if user is not logged in
+	}
+	$user = $_SESSION['user']; //assigns user value
     ?>
     <body>
         <h2>Home Page</h2>
@@ -32,32 +33,28 @@
 			<th>Public Post</th>
 		</tr>
 		<?php
-            $mysqli = new mysqli("localhost", "root", "", "thekidpirate_db"); //Connect to server and database
-			$userid = mysqli_real_escape_string($mysqli, $_SESSION['userid']);
-            $query = mysqli_query($mysqli, "Select * from list where user_id = '$userid'"); // SQL Query
-            while($row = mysqli_fetch_assoc($query)) {
-                Print "<tr>";
-			        Print '<td align="center">'. $row['id'] . "</td>";
-			        Print '<td align="center">'. $row['details'] . "</td>";
-			        Print '<td align="center">'. $row['date_posted'] . 
-                          " - " . $row['time_posted'] . "</td>";
-			        Print '<td align="center">'. $row['date_edited'] . 
-                          " - " . $row['time_edited'] ."</td>";
-			        Print '<td align="center"><a href="edit.php?id='. 
-                          $row['id'] .'">edit</a></td>';
-                    Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">delete</a></td>';
-			        Print '<td align="center">'. $row['public'] . "</td>";
+		    $userid = pg_escape_string($_SESSION['userid']);
+            	    $query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
+            	    while($row = pg_fetch_row($query)) {
+                	Print "<tr>";
+			Print '<td align="center">'. $row['id'] . "</td>";
+			Print '<td align="center">'. $row['details'] . "</td>";
+			Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
+			Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
+			Print '<td align="center"><a href="edit.php?id='. $row['id'] .'">edit</a></td>';
+	    		Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">delete</a></td>';
+			Print '<td align="center">'. $row['public'] . "</td>";
 		        Print "</tr>";
-            }
-        ?>
-		</table>
-		<script>
-			function confirmDelete(id) {
-			   var r = confirm("Are you sure you want to delete this record?");
-			   if(r == true) {
-				  window.location.assign("delete.php?id=" + id);
-			   }
-			}
-		</script>
+                    }
+        	?>
+	</table>
+	<script>
+		function confirmDelete(id) {
+		   var r = confirm("Are you sure you want to delete this record?");
+		   if(r == true) {
+			  window.location.assign("delete.php?id=" + id);
+		   }
+		}
+	</script>
 	</body>
 </html>
