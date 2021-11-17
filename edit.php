@@ -57,7 +57,7 @@
 		Print '
 		    <form action="edit.php" method="post">
 		    Enter new detail: <input type="text" name="details"/><br/> 
-		    public post? <input type="checkbox" name="public[]" /><br/> 
+		    public post? <input type="checkbox" name="public_checks[]" /><br/> 
 		    <input type="submit" value="Update List"/> 
 		    </form> 
 		'; 
@@ -73,9 +73,9 @@
 	$details = pg_escape_string($_POST['details']);
 	$public = "no";
 	$id = $_SESSION['id'];
-	$time = strftime("%X"); //time
-	$date = strftime("%B %D, %Y"); //date
-	foreach($_POST['public'] as $list) {
+	$datestamp = date('Y-m-d');
+	$timestamp = date('H:i:s');
+	foreach($_POST['public_checks'] as $list) {
 	    if($list != null) {
 		$public = "yes";
 	    }
