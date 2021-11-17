@@ -12,15 +12,13 @@
     $table_users = "";
     $table_password = "";
     if($exists > 0) {
-	Print '<script>alert("2!");</script>';
         while($row = pg_fetch_assoc($query)) {
-	    Print '<script>alert("3!");</script>';
 	    $table_users = $row['username'];
 	    $table_password = $row['password'];
 	    $table_id = $row['id'];
         }
 	//echo '<script type="text/javascript">alert("'.($username == $table_users).'");</script>';
-        if(strcmp($username, $table_users) == 0 && ($password === $table_password)) {
+        if($username === $table_users && $password == $table_password) {
 	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
 	    header("location: home.php");
