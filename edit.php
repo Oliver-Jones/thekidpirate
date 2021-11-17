@@ -35,7 +35,7 @@
                     $query = pg_query($db, "Select * from list where id = '$id'"); // SQL Query
                     $count = pg_num_rows($query);
                     if($count > 0) {
-                        while($row = pg_fetch_row($query)) {
+                        while($row = pg_fetch_assoc($query)) {
                             Print "<tr>";
 			        Print '<td align="center">' . $row['id'] . "</td>";
                                 Print '<td align="center">' . $row['details'] . "</td>";
