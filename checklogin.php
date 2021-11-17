@@ -22,8 +22,10 @@
         }
 	    echo '<script type="text/javascript">alert("'.$username.'");</script>';
 	    echo '<script type="text/javascript">alert("'.$table_users.'");</script>';
-	    echo '<script type="text/javascript">alert("'.$password.'");</script>';
+	    echo '<script type="text/javascript">alert("'.($username == $table_users).'");</script>';
 	    echo '<script type="text/javascript">alert("'.$table_password.'");</script>';
+	    echo '<script type="text/javascript">alert("'.$password.'");</script>';
+	    echo '<script type="text/javascript">alert("'.($password == $table_password).'");</script>';
 	Print '<script>alert("4!");</script>';
 	Print '<script>alert("5!");</script>';
 	Print '<script>alert("6!");</script>';
