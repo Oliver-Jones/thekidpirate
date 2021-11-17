@@ -17,6 +17,8 @@
 	        $decision = "yes"; // sets the value
 	    }
         }
+	echo '<script type="text/javascript">alert("'.$date.'");</script>';
+	    echo '<script type="text/javascript">alert("'.$time.'");</script>';
         pg_query($db, "INSERT INTO list(details, date_posted, time_posted, public, user_id) VALUES ('$details','$date','$time','$decision', '$userid')"); //SQL query
         header("location:home.php");
     }
