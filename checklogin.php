@@ -14,10 +14,10 @@
     if($exists > 0) {
         while($row = pg_fetch_assoc($query)) {
 	    $table_users = trim($row['username']);
-	    $table_password = $row['password'];
+	    $table_password = trim($row['password']);
 	    $table_id = $row['id'];
         }
-        if($username === $table_users && $password == $table_password) {
+        if($username === $table_users && $password === $table_password) {
 	    $_SESSION['user'] = $username;
 	    $_SESSION['userid'] = $table_id;
 	    header("location: home.php");
