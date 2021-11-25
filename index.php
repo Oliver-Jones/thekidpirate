@@ -14,25 +14,47 @@
     </head>
     <body>
         <div class="p-5 bg-primary text-white text-center">
-            <h1>The Kid Pirate</h1>
+			<div class="d-flex flex-row-reverse">
+				<div class="btn-group" role="group" aria-label="Basic outlined example">
+					<button type="button" class="btn btn-outline-light" onclick="window.location.href='login.php'">Login</button>
+					<button type="button" class="btn btn-outline-light" onclick="window.location.href='register.php'">Sign Up</button>
+				</div>
+			</div>
+			<h1>The Kid Pirate</h1>
             <p>Changing the world with innovative solutions!</p> 
         </div>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Active</a>
+                <ul id="nav_main" class="navbar-nav">
+                    <li id="nav_home" class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                    <li id="nav_blogs" class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
+                    <li id="nav_about" class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                    <li id="nav_contact" class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
+					<script>
+						// Add active class to the current button (highlight it)
+						var header = document.getElementById("nav_main");
+						var btns = header.getElementsByClassName("nav-link");
+						for (var i = 0; i < btns.length; i++) {
+							btns[i].addEventListener("click", function() {
+								var current = document.getElementsByClassName("active");
+								current[0].className = current[0].className.replace(" active", "");
+								this.className += " active";
+							});
+						}
+					</script>
                 </ul>
+				<form class="d-flex my-2">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-light" type="submit">Search</button>
+				</form>
             </div>
         </nav>
         <div class="container mt-5">
