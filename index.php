@@ -13,30 +13,86 @@
         </style>
     </head>
     <body>
-        <div class="p-5 bg-primary text-white text-center">
+        <div class="p-5 bg-primary text-white text-center" style="background-image: linear-gradient(45deg, #ef0909, transparent);">
 			<div class="d-flex flex-row-reverse">
 				<div class="btn-group" role="group" aria-label="Basic outlined example">
-					<button type="button" class="btn btn-outline-light" onclick="window.location.href='login.php'">Login</button>
-					<button type="button" class="btn btn-outline-light" onclick="window.location.href='register.php'">Sign Up</button>
+					<button type="button" class="btn btn-outline-light tooltip-test" data-bs-toggle="modal" data-bs-target="#loginModal" title="Login">Login</button>
+					<button type="button" class="btn btn-outline-light tooltip-test" data-bs-toggle="modal" data-bs-target="#signUpModal" title="Sign Up">Sign Up</button>
 				</div>
 			</div>
 			<h1>The Kid Pirate</h1>
             <p>Changing the world with innovative solutions!</p> 
         </div>
+		<!-- Login Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="loginModalLabel">Login</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="checklogin.php" method="POST">
+							<label for="username_input" class="form-label">Username</label>
+							<div class="input-group">
+								<span class="input-group-text" id="basic-addon1">@</span>
+								<input id="username_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
+							</div> <br/>
+							<div class="col-auto">
+								<label for="password_input" class="form-label">Password</label>
+								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
+							</div> <br/>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Sign In</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Register Modal -->
+		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="signUpModalLabel">Register</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="register.php" method="POST">
+							<label for="username_input" class="form-label">Username</label>
+							<div class="input-group">
+								<span class="input-group-text" id="basic-addon1">@</span>
+								<input id="username_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
+							</div> <br/>
+							<div class="col-auto">
+								<label for="password_input" class="form-label">Password</label>
+								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
+							</div> <br/>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
                 <ul id="nav_main" class="navbar-nav">
                     <li id="nav_home" class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="maintenance.php">Home</a>
                     </li>
                     <li id="nav_blogs" class="nav-item">
-                        <a class="nav-link" href="#">Blogs</a>
+                        <a class="nav-link" href="maintenance.php">Blogs</a>
                     </li>
                     <li id="nav_about" class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="maintenance.php">About Us</a>
                     </li>
                     <li id="nav_contact" class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="maintenance.php">Contact</a>
                     </li>
 					<script>
 						// Add active class to the current button (highlight it)
