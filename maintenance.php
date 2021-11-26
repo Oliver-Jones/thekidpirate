@@ -8,7 +8,7 @@
     </head>
     <body>
 		<div style="height:auto; width:100%">
-			<img src="maintenance.png" alt="Maintenance" style="width: 99.9vw; height: 74.4vh;">
+			<img src="/img/maintenance.png" alt="Maintenance" style="width: 99.9vw; height: 74.4vh;">
 			<div class="alert alert-warning" role="alert" style="text-align: center;">
 				<h4 class="alert-heading">We will be back soon!</h4>
 				<p>This page is down for maintenance. Sorry for the inconvenience but we are performing some maintenance at the moment.</p>
