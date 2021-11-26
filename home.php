@@ -152,11 +152,10 @@
 			<script>
 				$('#offCanvasEditActivity').on('show.bs.offcanvas', e => {
 				var $button = $(e.relatedTarget);
-				alert(JSON.stringify(e));
-				alert(JSON.stringify($button.closest('td').prev().text().trim()));
-				//$('#activity_input').val($button.closest('td').prev().text().trim());
-				$('#activity_input').val('heli');
-				$('#active_input').prop('checked', true);
+				var activityName = $button.closest('td').prev().prev().prev().text().trim();
+				var activityState = $button.closest('td').next().next().text().trim();
+				$('#activity_input').val(activityName);
+				$('#active_input').prop('checked', activityState == 'yes' ? true : false);
 				});
 			</script>
         </div>
