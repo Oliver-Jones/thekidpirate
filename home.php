@@ -74,7 +74,7 @@
             </div>
         </nav>
         <div class="container mt-5">
-		<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasCreateActivity" role="button" aria-controls="offcanvasExample">
+		<a class="btn btn-primary mb-5" data-bs-toggle="offcanvas" href="#offCanvasCreateActivity" role="button" aria-controls="offcanvasExample">
 				Add an Activity
 			</a>
 			<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasCreateActivity" aria-labelledby="offcanvasExampleLabel">
