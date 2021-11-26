@@ -134,14 +134,14 @@
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
 				<div class="offcanvas-body">
-					<form action="add.php" method="POST">
+					<form action="edit.php" method="POST">
 						<div class="form-floating">
-							<input id="activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
-							<label for="activity_input">Activity Name</label>
+							<input id="edit_activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
+							<label for="edit_activity_input">Activity Name</label>
 						</div> <br/>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="public[]" value="yes" id="active_input">
-							<label class="form-check-label" for="active_input">
+							<input class="form-check-input" type="checkbox" name="public[]" value="yes" id="edit_active_input">
+							<label class="form-check-label" for="edit_active_input">
 							Is Currently Active
 							</label>
 						</div> <br/>
@@ -152,10 +152,10 @@
 			<script>
 				$('#offCanvasEditActivity').on('show.bs.offcanvas', e => {
 				var $button = $(e.relatedTarget);
-				var activityName = $button.closest('td').prev().prev().prev().text().trim();
-				var activityState = $button.closest('td').next().next().text().trim();
-				$('#activity_input').val(activityName);
-				$('#active_input').prop('checked', activityState == 'yes' ? true : false);
+				var $activityName = $button.closest('td').prev().prev().prev().text().trim();
+				var $activityState = $button.closest('td').next().next().text().trim();
+				$('#activity_input').val($activityName);
+				$('#active_input').prop('checked', $activityState == 'yes' ? true : false);
 				});
 			</script>
         </div>
