@@ -74,6 +74,30 @@
             </div>
         </nav>
         <div class="container mt-5">
+		<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasCreateActivity" role="button" aria-controls="offcanvasExample">
+				Add an Activity
+			</a>
+			<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasCreateActivity" aria-labelledby="offcanvasExampleLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasExampleLabel">Add an Activity</h5>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<form action="add.php" method="POST">
+						<div class="form-floating">
+							<input id="activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
+							<label for="activity_input">Activity</label>
+						</div> <br/>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="public[]" value="yes" id="active_input">
+							<label class="form-check-label" for="active_input">
+							Is Currently Active
+							</label>
+						</div> <br/>
+						<button type="submit" class="btn btn-primary">Add my Activity</button>
+					</form>
+				</div>
+			</div>
 			<table class="table" border="1px" width="100%">
 				<thead class="table-dark">
 					<tr>
