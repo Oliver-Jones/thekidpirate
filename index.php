@@ -61,12 +61,12 @@
 						</div>
 						<div class="modal-body">
 							<div class="form-floating">
-								<input id="username_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
-								<label for="username_input" class="form-label">Username</label>
+								<input id="username_register_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
+								<label for="username_register_input" class="form-label">Username</label>
 							</div> <br/>
 							<div class="form-floating">
-								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
-								<label for="password_input" class="form-label">Password</label>
+								<input type="password" class="form-control" id="password_register_input" name="password" placeholder="Password">
+								<label for="password_register_input" class="form-label">Password</label>
 							</div> <br/>
 						</div>
 						<div class="modal-footer">
