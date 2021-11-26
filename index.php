@@ -27,12 +27,12 @@
 		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="loginModalLabel">Login</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<form action="checklogin.php" method="POST">
+					<form action="checklogin.php" method="POST">
+						<div class="modal-header">
+							<h5 class="modal-title" id="loginModalLabel">Login</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
 							<label for="username_input" class="form-label">Username</label>
 							<div class="input-group">
 								<span class="input-group-text" id="basic-addon1">@</span>
@@ -42,12 +42,12 @@
 								<label for="password_input" class="form-label">Password</label>
 								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
 							</div> <br/>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Sign In</button>
-					</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Sign In</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -55,12 +55,12 @@
 		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="signUpModalLabel">Register</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<form action="register.php" method="POST">
+					<form action="register.php" method="POST">
+						<div class="modal-header">
+							<h5 class="modal-title" id="signUpModalLabel">Register</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
 							<label for="username_input" class="form-label">Username</label>
 							<div class="input-group">
 								<span class="input-group-text" id="basic-addon1">@</span>
@@ -70,12 +70,12 @@
 								<label for="password_input" class="form-label">Password</label>
 								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
 							</div> <br/>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Sign Up</button>
-					</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Sign Up</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
