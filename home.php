@@ -1,9 +1,19 @@
 <html>
     <head>
-        <title>My first PHP Website</title>
+        <title>Home - The Kid Pirate</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            .fakeimg {
+                height: 200px;
+                background: #aaa;
+            }
+        </style>
     </head>
-    <?php
-	session_start(); //starts the session
+	<?php
+    session_start(); //starts the session
 	include 'connection.php';
 	if($_SESSION['user']){ // checks if the user is logged in  
 	}
@@ -13,49 +23,97 @@
 	$user = $_SESSION['user']; //assigns user value
     ?>
     <body>
-        <h2>Home Page</h2>
-        <p>Hello <?php Print "$user"?>!</p> <!--Displays user's name-->
-        <a href="logout.php">Click here to logout</a><br/><br/>
-        <form action="add.php" method="POST">
-            Add more to list: <input type="text" name="details" /> <br/>
-            Public post? <input type="checkbox" name="public_checks[]" value="false" /> <br/>
-            <input type="submit" value="Add to list"/>
-        </form>
-    	<h2 align="center">My list</h2>
-    	<table border="1px" width="100%">
-		<tr>
-			<th>Id</th>
-			<th>Details</th>
-			<th>Post Time</th>
-			<th>Edit Time</th>
-			<th>Edit</th>
-			<th>Delete</th>
-			<th>Public Post</th>
-		</tr>
-		<?php
-		    $userid = pg_escape_string($_SESSION['userid']);
-            	    $query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
-            	    while($row = pg_fetch_assoc($query)) {
-                	Print "<tr>";
-			Print '<td align="center">'. $row['id'] . "</td>";
-			Print '<td align="center">'. $row['details'] . "</td>";
-			Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
-			Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
-			Print '<td align="center"><a href="edit.php?id='. $row['id'] .'">edit</a></td>';
-	    		Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">delete</a></td>';
-			Print '<td align="center">'. $row['public'] . "</td>";
-		        Print "</tr>";
-                    }
-		    pg_close($db);
-        	?>
-	</table>
-	<script>
-		function confirmDelete(id) {
-		   var r = confirm("Are you sure you want to delete this record?");
-		   if(r == true) {
-			window.location.assign("delete.php?id=" + id);
-		   }
-		}
-	</script>
-	</body>
+        <div class="p-5 bg-primary text-white text-center" style="background-image: linear-gradient(45deg, #ef0909, transparent);">
+			<div class="d-flex flex-row-reverse">
+				<div class="btn-group" role="group">
+					<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						<?php Print "$user"?>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="btnGroupDrop1">
+						<li><a class="dropdown-item" href="maintenance.php">Edit Profile</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="logout.php">Log out</a></li>
+					</ul>
+				</div>
+			</div>
+			<h1>The Kid Pirate</h1>
+            <p>Changing the world with innovative solutions!</p> 
+        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul id="nav_main" class="navbar-nav">
+                    <li id="nav_home" class="nav-item">
+                        <a class="nav-link active" href="maintenance.php">Home</a>
+                    </li>
+                    <li id="nav_blogs" class="nav-item">
+                        <a class="nav-link" href="maintenance.php">Blogs</a>
+                    </li>
+                    <li id="nav_about" class="nav-item">
+                        <a class="nav-link" href="maintenance.php">About Us</a>
+                    </li>
+                    <li id="nav_contact" class="nav-item">
+                        <a class="nav-link" href="maintenance.php">Contact</a>
+                    </li>
+					<script>
+						// Add active class to the current button (highlight it)
+						var header = document.getElementById("nav_main");
+						var btns = header.getElementsByClassName("nav-link");
+						for (var i = 0; i < btns.length; i++) {
+							btns[i].addEventListener("click", function() {
+								var current = document.getElementsByClassName("active");
+								current[0].className = current[0].className.replace(" active", "");
+								this.className += " active";
+							});
+						}
+					</script>
+                </ul>
+				<form class="d-flex my-2">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-light" type="submit">Search</button>
+				</form>
+            </div>
+        </nav>
+        <div class="container mt-5">
+			<table class="table" border="1px" width="100%">
+				<thead class="table-dark">
+					<tr>
+						<th>Id</th>
+						<th>Details</th>
+						<th>Post Time</th>
+						<th>Edit Time</th>
+						<th>Edit</th>
+						<th>Delete</th>
+						<th>Public Post</th>
+					</tr>
+				</thead>
+				<?php
+					$userid = pg_escape_string($_SESSION['userid']);
+							$query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
+							while($row = pg_fetch_assoc($query)) {
+							Print "<tr>";
+					Print '<td align="center">'. $row['id'] . "</td>";
+					Print '<td align="center">'. $row['details'] . "</td>";
+					Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
+					Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
+					Print '<td align="center"><a href="edit.php?id='. $row['id'] .'">edit</a></td>';
+						Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">delete</a></td>';
+					Print '<td align="center">'. $row['public'] . "</td>";
+						Print "</tr>";
+							}
+					pg_close($db);
+				?>
+			</table>
+        </div>
+        <div class="mt-5 p-4 bg-dark text-white text-center">
+            <p>@ 2021 thekidpirate.com</p>
+        </div>
+		<script>
+			function confirmDelete(id) {
+			   var r = confirm("Are you sure you want to delete this record?");
+			   if(r == true) {
+				window.location.assign("delete.php?id=" + id);
+			   }
+			}
+		</script>
+    </body>
 </html>
