@@ -33,14 +33,13 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<label for="username_input" class="form-label">Username</label>
-							<div class="input-group">
-								<span class="input-group-text" id="basic-addon1">@</span>
+							<div class="form-floating">
 								<input id="username_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
+								<label for="username_input">Username</label>
 							</div> <br/>
-							<div class="col-auto">
-								<label for="password_input" class="form-label">Password</label>
+							<div class="form-floating">
 								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
+								<label for="password_input">Password</label>
 							</div> <br/>
 						</div>
 						<div class="modal-footer">
@@ -61,14 +60,13 @@
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<label for="username_input" class="form-label">Username</label>
-							<div class="input-group">
-								<span class="input-group-text" id="basic-addon1">@</span>
+							<div class="form-floating">
 								<input id="username_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
+								<label for="username_input" class="form-label">Username</label>
 							</div> <br/>
-							<div class="col-auto">
-								<label for="password_input" class="form-label">Password</label>
+							<div class="form-floating">
 								<input type="password" class="form-control" id="password_input" name="password" placeholder="Password">
+								<label for="password_input" class="form-label">Password</label>
 							</div> <br/>
 						</div>
 						<div class="modal-footer">
@@ -154,7 +152,7 @@
         </div>
 
         <div class="mt-5 p-4 bg-dark text-white text-center">
-            <p>Footer</p>
+            <p>@ 2021 thekidpirate.com</p>
         </div>
     </body>
 </html>
