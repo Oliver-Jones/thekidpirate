@@ -102,12 +102,12 @@
 				<thead class="table-dark">
 					<tr>
 						<th>Id</th>
-						<th>Details</th>
-						<th>Post Time</th>
-						<th>Edit Time</th>
+						<th>Activity</th>
+						<th>Created Date</th>
+						<th>Last Modified Date</th>
 						<th>Edit</th>
 						<th>Delete</th>
-						<th>Public Post</th>
+						<th>Is Active</th>
 					</tr>
 				</thead>
 				<?php
@@ -119,14 +119,45 @@
 					Print '<td align="center">'. $row['details'] . "</td>";
 					Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
 					Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
-					Print '<td align="center"><a href="edit.php?id='. $row['id'] .'">edit</a></td>';
-						Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">delete</a></td>';
+					Print '<td align="center"><a data-bs-toggle="offcanvas" href="#offCanvasEditActivity" id="edit_Activity">Edit</a></td>';
+						Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">Delete</a></td>';
 					Print '<td align="center">'. $row['public'] . "</td>";
 						Print "</tr>";
 							}
 					pg_close($db);
 				?>
 			</table>
+		<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasEditActivity" aria-labelledby="offcanvasExampleLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit an Activity</h5>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<form action="add.php" method="POST">
+						<div class="form-floating">
+							<input id="activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
+							<label for="activity_input">Activity Name</label>
+						</div> <br/>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="public[]" value="yes" id="active_input">
+							<label class="form-check-label" for="active_input">
+							Is Currently Active
+							</label>
+						</div> <br/>
+						<button type="submit" class="btn btn-primary">Save my Activity</button>
+					</form>
+				</div>
+			</div>
+			<script>
+				$('#offCanvasEditActivity').on('show.bs.offcanvas', e => {
+				var $button = $(e.relatedTarget);
+				alert(JSON.stringify(e));
+				alert(JSON.stringify($button.closest('td').prev().text().trim()));
+				//$('#activity_input').val($button.closest('td').prev().text().trim());
+				$('#activity_input').val('heli');
+				$('#active_input').prop('checked', true);
+				});
+			</script>
         </div>
         <div class="mt-5 p-4 bg-dark text-white text-center">
             <p>@ 2021 thekidpirate.com</p>
