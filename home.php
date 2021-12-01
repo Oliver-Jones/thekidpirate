@@ -135,9 +135,9 @@
 				</div>
 				<div class="offcanvas-body">
 					<form action="edit.php" method="POST">
-						<div class="form-floating" style="display:hidden">
+						<div class="form-floating" style="display:none;">
 							<input id="edit_id_input" type="text" class="form-control" aria-label="Activity" aria-describedby="basic-addon1" name="id">
-							<label for="edit_id_input">Activity Name</label>
+							<label for="edit_id_input">Activity Id</label>
 						</div>
 						<div class="form-floating">
 							<input id="edit_activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
