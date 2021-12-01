@@ -113,21 +113,53 @@
 				</thead>
 				<?php
 					$userid = pg_escape_string($_SESSION['userid']);
-							$query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
-							while($row = pg_fetch_assoc($query)) {
-							Print "<tr>";
-					Print '<td align="center">'. $row['id'] . "</td>";
-					Print '<td align="center">'. $row['details'] . "</td>";
-					Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
-					Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
-					Print '<td align="center"><a data-bs-toggle="offcanvas" href="#offCanvasEditActivity" id="edit_Activity">Edit</a></td>';
-						Print '<td align="center"><a href="#" onclick="confirmDelete('.$row['id'].')">Delete</a></td>';
-					Print '<td align="center">'. $row['public'] . "</td>";
+					$query = pg_query($db, "Select * from list where user_id = '$userid'"); // SQL Query
+					while($row = pg_fetch_assoc($query)) {
+						Print "<tr>";
+						Print '<td align="center">'. $row['id'] . "</td>";
+						Print '<td align="center">'. $row['details'] . "</td>";
+						Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
+						Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
+						Print '<td align="center"><a data-bs-toggle="offcanvas" href="#offCanvasEditActivity" id="edit_Activity">Edit</a></td>';
+						Print '<td align="center"><a data-bs-toggle="modal" data-bs-target="#deleteConfirm">Delete</a></td>';
+						Print '<td align="center">'. $row['public'] . "</td>";
 						Print "</tr>";
-							}
+					}
 					pg_close($db);
 				?>
 			</table>
+			<!-- Modal -->
+			<div class="modal fade" id="deleteConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							Are you sure want to delete?
+							
+						</div>
+						<div class="modal-footer">
+							<form action="delete.php" method="POST">
+								<div class="form-floating" style="display:none;">
+									<input id="delete_id_input" type="text" class="form-control" aria-label="Activity" aria-describedby="basic-addon1" name="id">
+									<label for="delete_id_input">Activity Id</label>
+								</div>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+								<button type="submit" class="btn btn-primary">Yes</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				$('#deleteConfirm').on('show.bs.modal', e => {
+					var $button = $(e.relatedTarget);
+					var $activityId = $button.closest('td').prev().prev().prev().prev().prev().text().trim();
+					$('#delete_id_input').val($activityId);
+				});
+			</script>
 		<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasEditActivity" aria-labelledby="offcanvasExampleLabel">
 				<div class="offcanvas-header">
 					<h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit an Activity</h5>
@@ -168,13 +200,5 @@
         <div class="mt-5 p-4 bg-dark text-white text-center">
             <p>@ 2021 thekidpirate.com</p>
         </div>
-		<script>
-			function confirmDelete(id) {
-			   var r = confirm("Are you sure you want to delete this record?");
-			   if(r == true) {
-				window.location.assign("delete.php?id=" + id);
-			   }
-			}
-		</script>
     </body>
 </html>
