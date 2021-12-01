@@ -140,7 +140,7 @@
 							<label for="edit_activity_input">Activity Name</label>
 						</div> <br/>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="public[]" value="yes" id="edit_active_input">
+							<input class="form-check-input" type="checkbox" name="public_checks[]" value="yes" id="edit_active_input">
 							<label class="form-check-label" for="edit_active_input">
 							Is Currently Active
 							</label>
