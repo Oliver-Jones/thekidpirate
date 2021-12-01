@@ -121,7 +121,7 @@
 						Print '<td align="center">'. $row['date_posted'] . " - " . $row['time_posted'] . "</td>";
 						Print '<td align="center">'. $row['date_edited'] . " - " . $row['time_edited'] ."</td>";
 						Print '<td align="center"><a data-bs-toggle="offcanvas" href="#offCanvasEditActivity" id="edit_Activity">Edit</a></td>';
-						Print '<td align="center"><a data-bs-toggle="modal" data-bs-target="#deleteConfirm">Delete</a></td>';
+						Print '<td align="center"><a data-bs-toggle="modal" href="#" data-bs-target="#deleteConfirm">Delete</a></td>';
 						Print '<td align="center">'. $row['public'] . "</td>";
 						Print "</tr>";
 					}
