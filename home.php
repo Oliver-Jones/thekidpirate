@@ -135,6 +135,10 @@
 				</div>
 				<div class="offcanvas-body">
 					<form action="edit.php" method="POST">
+						<div class="form-floating" style="display:hidden">
+							<input id="edit_id_input" type="text" class="form-control" aria-label="Activity" aria-describedby="basic-addon1" name="id">
+							<label for="edit_id_input">Activity Name</label>
+						</div>
 						<div class="form-floating">
 							<input id="edit_activity_input" type="text" class="form-control" placeholder="Type here..." aria-label="Activity" aria-describedby="basic-addon1" name="details" required="required">
 							<label for="edit_activity_input">Activity Name</label>
@@ -152,8 +156,10 @@
 			<script>
 				$('#offCanvasEditActivity').on('show.bs.offcanvas', e => {
 				var $button = $(e.relatedTarget);
+				var $activityId = $button.closest('td').prev().prev().prev().prev().text().trim();
 				var $activityName = $button.closest('td').prev().prev().prev().text().trim();
 				var $activityState = $button.closest('td').next().next().text().trim();
+				$('#edit_id_input').val($activityId);
 				$('#edit_activity_input').val($activityName);
 				$('#edit_active_input').prop('checked', $activityState == 'yes' ? true : false);
 				});
