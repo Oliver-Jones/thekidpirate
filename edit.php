@@ -10,7 +10,7 @@
 		if($_SERVER['REQUEST_METHOD'] == "POST") {
 	$details = pg_escape_string($_POST['details']);
 	$public = "no";
-	$id = $_SESSION['id'];
+	$id = $_POST['id'];
 	$datestamp = date('Y-m-d');
 	$timestamp = date('H:i:s');
 	foreach($_POST['public_checks'] as $each_check) { //gets the data from the checkbox
