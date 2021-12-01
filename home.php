@@ -154,8 +154,6 @@
 				var $button = $(e.relatedTarget);
 				var $activityName = $button.closest('td').prev().prev().prev().text().trim();
 				var $activityState = $button.closest('td').next().next().text().trim();
-					alert($activityName);
-					alert($activityState);
 				$('#edit_activity_input').val($activityName);
 				$('#edit_active_input').prop('checked', $activityState == 'yes' ? true : false);
 				});
