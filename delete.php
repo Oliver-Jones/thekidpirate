@@ -8,7 +8,7 @@
     }
     if($_SERVER['REQUEST_METHOD'] == "POST") {
     	$act_id = pg_escape_string($_POST['id']);
-	$query = pg_query($db, "DELETE FROM list WHERE id='$id'");
+	$query = pg_query($db, "DELETE FROM list WHERE id='$act_id'");
 	if(!$query) {
 	    die("Error in SQL query: " . pg_last_error() . "\n");
 	}
