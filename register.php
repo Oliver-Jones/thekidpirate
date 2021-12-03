@@ -19,6 +19,7 @@
     include 'connection.php';
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$username = pg_escape_string($_POST['username']);
+	$password = pg_escape_string($_POST['useremail']);
 	$password = pg_escape_string($_POST['password']);
 	$bool = true;
 	$query = pg_query($db, "SELECT * FROM users WHERE username = '$username'"); //Query the users table
@@ -29,7 +30,7 @@
 	    if($username === $table_users) { // checks if there are any matching fields
     	        $bool = false; // sets bool to false
     		Print '<script>alert("Username has been taken!");</script>'; //Prompts the user
-    		Print '<script>window.location.assign("register.php");</script>'; //redirects to register.php
+    		Print '<script>window.location.assign("index.php");</script>'; //redirects to register.php
     	    }
         }
 	if($bool) { // checks if bool is true
