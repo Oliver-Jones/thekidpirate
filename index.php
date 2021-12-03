@@ -98,10 +98,10 @@
 			</div>
 		</div>
 		<!-- Register Modal -->
-		<div class="modal fade requires-validation" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="register.php" method="POST" onsubmit="return validate();">
+					<form action="register.php" method="POST" onsubmit="return validate();" class="requires-validation" novalidate>
 						<div class="modal-header">
 							<h5 class="modal-title" id="signUpModalLabel">Register</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
