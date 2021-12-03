@@ -12,6 +12,21 @@
 			}
 		</style>
 		<script type="text/javascript">
+			(function () {
+				'use strict'
+				const forms = document.querySelectorAll('.requires-validation')
+				Array.from(forms)
+				.forEach(function (form) {
+					form.addEventListener('submit', function (event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+
+						form.classList.add('was-validated')
+					}, false)
+				})
+			})()
 			function validate() {
 				alert("hi 1");
 				var name = document.getElementById( "username_register_input" );
@@ -28,12 +43,12 @@
 
 				var password = document.getElementById( "password_register_input" );
 				var cpassword = document.getElementById( "password_conf_input" );
-				if( password.value == "" || password.value >= 8) {
+				if( password.value == "" || password.value.length < 8) {
 					document.getElementById( "invalidCheckPassword" ).innerHTML = "Password Must Be More Than Or Equal To 8 Digits";
 					return false;
 				}
 				
-				if( password != cpassword ) {
+				if( password <> cpassword ) {
 					alert("hi 2");
 					document.getElementById( "invalidCheckPassword" ).innerHTML = "Password and confirm Password did not match";
 					document.getElementById( "invalidCheckCPassword" ).innerHTML = "Password and confirm Password did not match";
@@ -83,7 +98,7 @@
 			</div>
 		</div>
 		<!-- Register Modal -->
-		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+		<div class="modal fade requires-validation" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<form action="register.php" method="POST" onsubmit="return validate();">
