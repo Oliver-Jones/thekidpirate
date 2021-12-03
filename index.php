@@ -13,6 +13,7 @@
 		</style>
 		<script type="text/javascript">
 			function validate() {
+				alert("hi 1");
 				var name = document.getElementById( "username_register_input" );
 				if( name.value == "" ) {
 					document.getElementById( "invalidCheckEmail" ).innerHTML = "You Have To Write Your Name";
@@ -32,7 +33,8 @@
 					return false;
 				}
 				
-				if( password <> cpassword) {
+				if( password != cpassword ) {
+					alert("hi 2");
 					document.getElementById( "invalidCheckPassword" ).innerHTML = "Password and confirm Password did not match";
 					document.getElementById( "invalidCheckCPassword" ).innerHTML = "Password and confirm Password did not match";
 					return false;
