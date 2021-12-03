@@ -21,19 +21,20 @@
 
 				var email = document.getElementById( "email_register_input" );
 				if( email.value == "" || email.value.indexOf( "@" ) == -1 ) {
-					document.getElementById( "error_para" ).innerHTML = "You Have To Write Valid Email Address";
+					document.getElementById( "invalidCheckEmail" ).innerHTML = "You Have To Write Valid Email Address";
 					return false;
 				}
 
 				var password = document.getElementById( "password_register_input" );
 				var cpassword = document.getElementById( "password_conf_input" );
 				if( password.value == "" || password.value >= 8) {
-					document.getElementById( "error_para" ).innerHTML = "Password Must Be More Than Or Equal To 8 Digits";
+					document.getElementById( "invalidCheckPassword" ).innerHTML = "Password Must Be More Than Or Equal To 8 Digits";
 					return false;
 				}
 				
 				if( password <> cpassword) {
-					document.getElementById( "error_para" ).innerHTML = "Password and confirm Password did not match";
+					document.getElementById( "invalidCheckPassword" ).innerHTML = "Password and confirm Password did not match";
+					document.getElementById( "invalidCheckCPassword" ).innerHTML = "Password and confirm Password did not match";
 					return false;
 				}
 				return true;
