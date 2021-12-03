@@ -11,6 +11,35 @@
 			background: #aaa;
 			}
 		</style>
+		<script type="text/javascript">
+			function validate() {
+				var name = document.getElementById( "username_register_input" );
+				if( name.value == "" ) {
+					document.getElementById( "invalidCheckEmail" ).innerHTML = "You Have To Write Your Name";
+					return false;
+				}
+
+				var email = document.getElementById( "email_register_input" );
+				if( email.value == "" || email.value.indexOf( "@" ) == -1 ) {
+					document.getElementById( "error_para" ).innerHTML = "You Have To Write Valid Email Address";
+					return false;
+				}
+
+				var password = document.getElementById( "password_register_input" );
+				var cpassword = document.getElementById( "password_conf_input" );
+				if( password.value == "" || password.value >= 8) {
+					document.getElementById( "error_para" ).innerHTML = "Password Must Be More Than Or Equal To 8 Digits";
+					return false;
+				}
+				
+				if( password <> cpassword) {
+					document.getElementById( "error_para" ).innerHTML = "Password and confirm Password did not match";
+					return false;
+				}
+				return true;
+			}
+
+		</script>
 	</head>
 	<body>
 		<div class="p-5 bg-primary text-white text-center" style="background-image: linear-gradient(45deg, #ef0909, transparent);">
@@ -54,7 +83,7 @@
 		<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="register.php" method="POST">
+					<form action="register.php" method="POST" onsubmit="return validate();">
 						<div class="modal-header">
 							<h5 class="modal-title" id="signUpModalLabel">Register</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -63,18 +92,22 @@
 							<div class="form-floating">
 								<input id="username_register_input" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" required="required">
 								<label for="username_register_input" class="form-label">Username</label>
+								<div id="invalidCheckUsername" class="invalid-feedback"></div>
 							</div> <br/>
 							<div class="form-floating">
 								<input id="email_register_input" type="email" class="form-control" placeholder="name@example.com" aria-label="Email Address" aria-describedby="basic-addon1" name="useremail" required="required">
 								<label for="email_register_input" class="form-label">Email Address</label>
+								<div id="invalidCheckEmail" class="invalid-feedback"></div>
 							</div> <br/>
 							<div class="form-floating">
 								<input type="password" class="form-control" id="password_register_input" name="password" placeholder="Password" required="required">
 								<label for="password_register_input" class="form-label">Password</label>
+								<div id="invalidCheckPassword" class="invalid-feedback"></div>
 							</div> <br/>
 							<div class="form-floating">
 								<input type="password" class="form-control" id="password_conf_input" name="confpassword" placeholder="Confirm Password" required="required">
-								<label for="password_conf_input">Password</label>
+								<label for="password_conf_input">Confrim Password</label>
+								<div id="invalidCheckCPassword" class="invalid-feedback"></div>
 							</div> <br/>
 						</div>
 						<div class="modal-footer">
